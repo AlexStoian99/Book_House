@@ -1,0 +1,46 @@
+{% extends 'book/partials/_base.html' %}
+{% block title %}Library List{% endblock %}
+{% block container %}
+<div class="container my-3 h-100">
+    <button type="button" form="library-form" class="btn btn-success  mx-3" data-bs-toggle="modal" data-bs-target="#modal-library">
+        Add new library
+    </button>
+        {% include 'book/modal_library.html' %}
+        <div class="d-flex  flex-wrap">
+            <table class="table table-striped" style="overflow-x: auto">
+                <thead>
+                    <tr>
+                        <th scope="col">Denumire</th>
+                        <th scope="col">Adresa</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for library in object_list %}
+                    <tr>
+                        <td>{{ library.denumire }}</td>
+                        <td>{{ library.adresa }}</td>
+                        <td>
+                            <form action="{% url 'book:update_library' library.id  %}">
+                                {% csrf_token %}
+                                 <button class="btn btn-outline-warning mx-0 " name="update_library"><i class="fas text-warning fa-edit "></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post"  action="{% url 'book:delete_library' library.id  %}">
+                                {% csrf_token %}
+                                {% if request.user.is_staff %}
+                                    <button class="btn btn-outline-danger mx-0 " name="delete_library" value="0"><i class="fas fa-times"></i></button>
+                                {% endif %}
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

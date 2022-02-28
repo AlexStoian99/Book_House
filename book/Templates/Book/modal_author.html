@@ -1,0 +1,15 @@
+{% extends 'book/partials/_custom_modal_base.html' %}
+{% block modal-id %}modal-author{% endblock %}
+{% block modal-attributes %} data-url="{% url 'book:create_author' %}" {% endblock %}
+{% block modal-header %}
+<h5 class="modal-title text-black" id="staticBackdropLabel">Add new author</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{% endblock %}
+
+{% block modal-body %}
+    {% include 'book/partials/_form_new_author.html' %}
+{% endblock %}
+
+{#{% block modal-footer %}#}
+{##}
+{#{% endblock %}#}

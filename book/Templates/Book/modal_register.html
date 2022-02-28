@@ -1,0 +1,31 @@
+{% extends 'book/partials/_custom_modal_base.html' %}
+{% block modal-id %}register-modal{% endblock %}
+{% block modal-header %}
+<h5 class="modal-title text-dark" id="staticBackdropLabel">Register</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{% endblock %}
+{% block modal-body %}
+<form id="register-form" class="text-black" action="{% url 'book:register' %}" method="post">
+{% csrf_token %}
+        <div class="form">
+          <input type="text" name="username" placeholder="Username" class="form-control validate">
+          <label class="text-black" data-error="wrong" data-success="right" for="defaultForm-email"></label>
+        </div>
+        <div class="form">
+          <input type="email" name="email" placeholder="Email" class="form-control validate">
+          <label class="text-black" data-error="wrong" data-success="right" for="defaultForm-email"></label>
+        </div>
+        <div class="form">
+          <input type="password" name="password1" placeholder="Password" class="form-control validate" >
+          <label class="text-black" data-error="wrong" data-success="right" for="defaultForm-pass"></label>
+        </div>
+        <div class="form">
+          <input type="password" name="password2" placeholder="Password" class="form-control validate" >
+          <label class="text-black" data-error="wrong" data-success="right" for="defaultForm-pass"></label>
+        </div>
+
+</form>
+{% endblock %}
+{% block modal-footer %}
+<button type="submit" form="register-form" class="btn btn-dark">Register</button>
+{% endblock %}

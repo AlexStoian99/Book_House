@@ -1,0 +1,70 @@
+{% extends 'book/partials/_base.html' %}
+{% load static %}
+{% block title %}Book House{% endblock %}
+{% block container %}
+<div class="row" style="background-image: url('{% static "book/images/index2.jpeg"%}');height: 50vh; background-repeat: no-repeat; background-size: cover; background-position: center center">
+    <strong><h4 class="text-white text-center pt-5">BOOK HOUSE</h4></strong>
+    <div class="col text-center">
+      <button type="button" class="btn btn-outline-light" value="">
+          <a class="text-white" href="{% url 'book:authors_list' %}" style="text-decoration: none;">Autori</a>
+      </button>
+    </div>
+    <div class="col text-center">
+      <button type="button" class="btn btn-outline-light" >
+          <a class="text-white" href="{% url 'book:library_list' %}" style="text-decoration: none;">Biblioteci</a>
+
+      </button>
+    </div>
+</div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 gx-5 mb-4">
+              <div class="bg-image" data-mdb-ripple-color="light">
+                <img src=" {% static 'book/images/biblioteca.jpg' %}" class="img-fluid rounded-3" />
+{#                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>#}
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-6 gx-5 mb-4">
+              <h4><strong>Facilis consequatur eligendi</strong></h4>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+              </p>
+              <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
+                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
+                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+              </p>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6 gx-5 mb-4">
+              <h4><strong>Facilis consequatur eligendi</strong></h4>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+                sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+              </p>
+              <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
+                nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
+                alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+              </p>
+            </div>
+            <div class="col-md-4 gx-5 mb-4">
+              <div class="bg-image" data-mdb-ripple-color="light">
+                <img src=" {% static 'book/images/library1.jpg' %}" class="img-fluid rounded-3" />
+{#                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>#}
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

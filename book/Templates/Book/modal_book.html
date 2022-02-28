@@ -1,0 +1,15 @@
+{% extends 'book/partials/_custom_modal_base.html' %}
+{% block modal-id %}modal-book{% endblock %}
+{% block modal-attributes %} data-url="{% url 'book:create_book' %}" {% endblock %}
+{% block modal-header %}
+<h5 class="modal-title text-black" id="staticBackdropLabel">Add new book</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{% endblock %}
+
+{% block modal-body %}
+    {% include 'book/partials/_form_new_book.html' %}
+{% endblock %}
+
+{% block modal-footer %}
+
+{% endblock %}

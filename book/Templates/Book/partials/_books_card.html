@@ -1,0 +1,27 @@
+<div class="card m-3 rounded" style="width: 18rem;">
+ {% if book.image %}
+    <img src="{{ book.image.url }}"  class="card-img-top" alt="">
+{% endif%}
+  <div class="card-body">
+    <h5 class="card-title">{{ book.titlu }}</h5>
+    <span class="card-text">Editura: {{ book.editura }} {{ book.an_aparitie }}</span>
+    <p class="card-text">Autor: {% for autor in book.autor.all %} {{ autor}} {% endfor %}</p>
+    <p class="mb-5"> {% for biblioteca in book.biblioteca.all %}  {{ biblioteca }} <br> {% endfor %}</p>
+
+
+      <div class="position-absolute bottom-0 end-0 m-2">
+          <form action="{% url 'book:update_books' book.id  %}">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-warning mx-0 "><i class="fas text-warning fa-edit"></i></button>
+          </form>
+      </div>
+      <div class="position-absolute bottom-0 start-0 m-2">
+      <form method="post"  action="{% url 'book:delete_book' book.id  %}">
+          {% csrf_token %}
+           {% if request.user.is_staff %}
+                <button class="btn btn-outline-danger me-md-2" name="delete" value="0">Sterge</button>
+          {% endif %}
+      </form>
+      </div>
+  </div>
+</div>

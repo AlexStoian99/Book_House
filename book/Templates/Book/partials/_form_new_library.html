@@ -1,0 +1,9 @@
+<form id="library-form" class="text-black" action="{% url 'book:create_library' %}" method="post">
+{% csrf_token %}
+    {{ library_form.as_p }}
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<input type="submit" class="btn btn-success" value="Add library">
+</form>
+

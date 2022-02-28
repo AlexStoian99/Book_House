@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %}</title>
+  {% include 'book/partials/_styles.html' %}
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="text-black">
+  <header class="{% block header-classes %}{% endblock %}">
+    {% block header %}
+        {% include 'book/partials/_header.html' %}
+    {% endblock %}
+  </header>
+
+{#  <div id="alerts" class="position-absolute top-0 end-0 mt-3 me-3" role="alert">#}
+{##}
+{#  </div>#}
+
+{#  <div class="container my-3 h-100">#}
+    {% block container %}{% endblock %}
+{#  </div>#}
+
+    <footer class="{% block footer-classes %}{% endblock %}">
+    {% block footer %}
+    {% include 'book/partials/_footer.html' %}
+    {% endblock %}
+  </footer>
+
+  {% include 'book/partials/_scripts.html' %}
+  {% block extra_body %}{% endblock %}
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</body>
+</html>

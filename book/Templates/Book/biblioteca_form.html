@@ -1,0 +1,10 @@
+{% extends 'book/partials/_base.html' %}
+{% block container %}
+ <div class="container my-3 h-100">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"class=" btn btn-warning" value="Update library">
+    </form>
+ </div>
+{% endblock %}

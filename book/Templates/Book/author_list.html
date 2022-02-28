@@ -1,0 +1,54 @@
+{% extends 'book/partials/_base.html' %}
+{% block title %}Authors List{% endblock %}
+{% block container %}
+ <div class="container my-3 h-100">
+        <button type="button" form="author-form" class="btn btn-success  mx" data-bs-toggle="modal" data-bs-target="#modal-author">
+            Add new author
+        </button>
+    {% include 'book/modal_author.html' %}
+        <div class="d-flex  flex-wrap" style="overflow-x: auto">
+            <table class="table table-striped" >
+
+{#   <div class="col-md-9" style="overflow-x: auto">#}
+{#    <table class="table table-bordered" style="width:auto">#}
+        <thead>
+            <tr>
+                <th scope="col">Nume</th>
+                <th scope="col">Prenume</th>
+                <th scope="col">Origine</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for author in object_list %}
+            <tr>
+                <td>{{ author.nume_autor }}</td>
+                <td>{{ author.prenume_autor }}</td>
+                <td>{{ author.tara_origine }}</td>
+                <td>
+                    <form action="{% url 'book:update_author' author.id  %}">
+                        {% csrf_token %}
+                            <button class="btn btn-outline-warning mx-0 " name="update_author"><i class="fas text-warning fa-edit "></i></button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post"  action="{% url 'book:delete_author' author.id  %}">
+                        {% csrf_token %}
+                        {% if request.user.is_staff %}
+                            <button class="btn btn-outline-danger mx-0 " name="delete_author" value="0"><i class="fas fa-times"></i></button>
+                        {% endif %}
+                    </form>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
